@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Fácil Extranjería · Tu permiso de residencia, sin estrés y sin sorpresas</title>
-  <meta name="description" content="Despacho de abogadas especializado en extranjería e inmigración en España. Precios transparentes, sin letra pequeña, hasta un 40% menos que la media." />
+  <meta name="description" content="Asesoría legal especializada en extranjería e inmigración en España. Precios justos y transparentes, sin letra pequeña, hasta un 40% menos que la media." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -602,7 +602,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .band-col { display: flex; flex-direction: column; gap: 14px; }
-.band-col .section-title { margin-bottom: 0; min-height: 1.1em; }
+.band-col .section-title { margin-bottom: 0; }
 
 .empathy-cards {
   display: grid;
@@ -1797,6 +1797,215 @@ a { color: inherit; text-decoration: none; }
 .sim-result-restart:hover { color: var(--navy); gap: 10px; }
 
   </style>
+  <style>
+/* =========================================================
+   Edits — justify text, FAQ centering, why alignment, About
+   ========================================================= */
+
+/* Hide the removed hero third word so it leaves no gap */
+.hero-w3:empty { display: none; }
+
+/* Justify all body copy */
+.hero-sub,
+.empathy-card-body,
+.empathy-closing,
+.why-item-text p,
+.how-step-text p,
+.testi-quote,
+.faq-a-wrap > .faq-a,
+.about-text p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* "¿Por qué?" — align the cards uniformly */
+.why-list { align-content: start; }
+.why-item { align-items: center; }
+
+/* FAQ — center each question title, keep the +/- toggle at the right */
+.faq-q {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  padding-left: 44px;
+  padding-right: 44px;
+}
+.faq-q > span:first-child { flex: 0 1 auto; }
+.faq-q-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.faq-item.is-open .faq-q-toggle { transform: translateY(-50%); }
+
+/* About (Quiénes somos) */
+.about {
+  position: relative;
+  background: var(--paper);
+  padding: 48px 0 40px;
+  overflow: hidden;
+}
+.about-bg { position: absolute; inset: 0; pointer-events: none; }
+.about-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.4; }
+.about-blob-1 {
+  width: 320px; height: 320px;
+  background: radial-gradient(closest-side, rgba(212,160,23,0.28), rgba(212,160,23,0) 70%);
+  top: -120px; left: -80px;
+}
+.about-blob-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(closest-side, rgba(15,45,82,0.16), rgba(15,45,82,0) 70%);
+  bottom: -120px; right: -60px;
+}
+.about-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+}
+.about-text p {
+  margin: 0 0 12px;
+  font-size: 14.5px; line-height: 1.6; color: var(--ink-2);
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-stats {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.about-stat {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  background: var(--white); border: 1.5px solid var(--gold); border-radius: 14px;
+  padding: 18px 10px;
+  box-shadow: var(--shadow-card), inset 0 0 0 1px rgba(212,160,23,0.12);
+  opacity: 0; transform: translateY(8px);
+  animation: cardIn 0.55s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) forwards;
+}
+.about-stat-value {
+  font-family: var(--font-display); font-weight: 700; font-size: 26px;
+  letter-spacing: -0.03em; color: var(--navy);
+}
+.about-stat-label {
+  font-size: 11.5px; color: var(--ink-3); text-align: center; line-height: 1.3;
+}
+@media (min-width: 720px) {
+  .about { padding: 64px 0 56px; }
+  .about-grid { grid-template-columns: 1.4fr 1fr; gap: 40px; }
+  .about-text p { font-size: 15.5px; }
+}
+@media (min-width: 1024px) {
+  .about { padding: 88px 0 72px; }
+}
+
+/* =========================================================
+   Hero background photo + legibility overlay (mobile-first)
+   ========================================================= */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url("hero.jpeg");
+  background-size: cover;
+  background-position: 50% 28%;
+  background-repeat: no-repeat;
+}
+/* Dark scrim so white text stays readable. Lighter now — lets the photo show through. */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,24,48,0.42) 0%, rgba(8,24,48,0.18) 40%, rgba(8,24,48,0.66) 100%),
+    linear-gradient(90deg, rgba(8,24,48,0.74) 0%, rgba(8,24,48,0.34) 55%, rgba(8,24,48,0.08) 100%);
+}
+@media (min-width: 720px) {
+  .hero-photo { background-position: 62% 26%; }
+  .hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(8,24,48,0.34) 0%, rgba(8,24,48,0.12) 44%, rgba(8,24,48,0.56) 100%),
+      linear-gradient(90deg, rgba(8,24,48,0.80) 0%, rgba(8,24,48,0.40) 44%, rgba(8,24,48,0.04) 76%, rgba(8,24,48,0) 100%);
+  }
+}
+@media (min-width: 1024px) {
+  .hero-photo { background-position: 66% 24%; }
+}
+
+/* Secondary CTA — same family as the primary, lower visual weight */
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+  border: 1.5px solid rgba(212,160,23,0.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(4px);
+}
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  background: rgba(212,160,23,0.14);
+  border-color: var(--gold);
+  box-shadow: 0 8px 20px -10px rgba(212,160,23,0.5);
+}
+.btn-secondary:active { transform: translateY(0); }
+
+/* Let hero buttons wrap on narrow phones instead of overflowing */
+.hero-actions { flex-wrap: wrap; }
+
+/* Secondary CTA in the floating navbar — icon-only on phones, icon+text on wider screens */
+.nav-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid rgba(212,160,23,0.7);
+  background: rgba(255,255,255,0.55);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.nav-cta-secondary:hover {
+  transform: translateY(-1px);
+  background: var(--gold-tint);
+  border-color: var(--gold);
+  box-shadow: 0 8px 18px -10px rgba(212,160,23,0.5);
+}
+.nav-cta-secondary:active { transform: translateY(0); }
+.nav-cta-secondary-label { display: none; }
+@media (min-width: 720px) {
+  .nav-cta-secondary { padding: 9px 14px; font-size: 13px; }
+  .nav-cta-secondary-label { display: inline; }
+}
+
+/* Final CTA: center both buttons, wrap on small screens */
+.final-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* "Así de fácil" — gold border on the step cards */
+.how-step { border: 1.5px solid rgba(212,160,23,0.55); }
+
+/* =========================================================
+   Card alignment across two-column sections
+   Reserve an equal title height in each column so the card
+   stacks start on the same horizontal line (same X axis),
+   independently of how long each title is.
+   Only applies when the columns sit side by side (>=720px).
+   ========================================================= */
+@media (min-width: 720px) {
+  .band-col .section-title,
+  .trust-col .section-title {
+    min-height: 2.6em;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+  </style>
 </head>
 <body>
   <div id="root"></div>
@@ -1811,18 +2020,17 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
   "es": {
     "nav": { "lang_es": "ES", "lang_en": "EN" },
     "hero": {
-      "kicker": "Despacho de abogadas · Barcelona",
+      "kicker": "Asesoría legal · España",
       "word1": "Extranjería.",
       "word2": "Fácil.",
-      "word3": "Extranjería Clara.",
+      "word3": "",
       "tagline": "Tu permiso de residencia, sin estrés y sin sorpresas.",
-      "subtitle": "Somos abogadas especializadas en extranjería. Cientos de casos resueltos — NIE, arraigo, visados, nacionalidad. Te acompañamos de principio a fin. ¿Lo mejor? No hinchamos precios. Transparentes, sin letra pequeña, hasta un 40% menos que la media.",
+      "subtitle": "Somos abogados especializados en extranjería. Cientos de casos resueltos (NIE, arraigo, visados, nacionalidad y más). Te acompañamos de principio a fin. ¿Lo mejor? Nuestros precios son justos y transparentes, sin letra pequeña, hasta un 40% menos que la media.",
       "ghostCta": "¿Cuánto me costaría?",
       "trust": [
         "+200 casos resueltos",
-        "Abogadas colegiadas",
         "Respuesta en 24h",
-        "Consulta desde 50€"
+        "Consulta desde 60€"
       ]
     },
     "empathy": {
@@ -1832,62 +2040,75 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
         { "tag": "Confusión", "body": "Llevas meses con los papeles sin resolver. Cada vez que buscas información encuentras respuestas distintas y contradictorias." },
         { "tag": "Miedo", "body": "Tienes miedo de que te denieguen, de perder tiempo, de no entender lo que firmas. Ya lo intentaste antes y algo salió mal." }
       ],
-      "closing": "Nosotras lo hemos visto cientos de veces. Por eso trabajamos diferente: precio fijo desde el principio, sin sorpresas, sin letra pequeña. Si somos tu solución, te lo diremos. Si no, también."
+      "closing": "Lo hemos visto cientos de veces. Por eso trabajamos diferente: precio fijo desde el principio, sin sorpresas y sin letra pequeña. Si somos tu solución, te lo diremos. Y si no lo somos, también."
     },
     "why": {
       "title": "¿Por qué Fácil Extranjería?",
       "items": [
-        { "title": "Precio justo y transparente", "body": "Sin sorpresas. El precio que acordamos es el que pagas." },
-        { "title": "Abogadas colegiadas ICAB", "body": "No gestorías, no intermediarios. Abogadas colegiadas con responsabilidad legal." },
-        { "title": "Todo online, toda España", "body": "No necesitas venir a ninguna oficina. Gestionamos tu caso desde donde estés." },
-        { "title": "Nos importa tu caso", "body": "Si no eres candidato para el proceso que buscas, te lo decimos y buscamos alternativas." }
+        { "title": "Precio justo y transparente", "body": "Sin sorpresas ni letra pequeña. El precio que acordamos es el que pagas, hasta un 40% menos que la media." },
+        { "title": "Abogados especializados", "body": "No gestorías ni intermediarios. Profesionales del derecho de extranjería que responden de tu caso." },
+        { "title": "Todo online, toda España", "body": "No necesitas desplazarte a ninguna oficina. Gestionamos tu trámite desde donde estés." },
+        { "title": "Tu caso nos importa", "body": "Si no eres candidato para el trámite que buscas, te lo decimos con claridad y buscamos alternativas contigo." }
       ],
       "link": "Descubre cuánto costaría tu trámite"
+    },
+    "about": {
+      "title": "¿Quiénes somos?",
+      "paras": [
+        "Somos una asesoría especializada en derecho de extranjería e inmigración. Acompañamos a personas de todo el mundo a conseguir su residencia, su nacionalidad o el trámite que necesitan para construir su vida en España.",
+        "Trabajamos de forma cercana y 100% online, con precios justos y transparentes. Nada de letra pequeña ni de sorpresas: te decimos desde el principio qué necesitas, cuánto cuesta y cuánto tarda. Y si tu caso no tiene salida, también te lo decimos con honestidad."
+      ],
+      "stats": [
+        { "value": "+200", "label": "casos resueltos" },
+        { "value": "100%", "label": "online, toda España" },
+        { "value": "24h", "label": "tiempo de respuesta" }
+      ]
     },
     "how": {
       "title": "Así de fácil",
       "steps": [
         { "head": "Simula tu caso", "body": "Responde 3 preguntas en menos de un minuto. Te damos una estimación real de tu proceso y cuánto ahorras respecto a la media." },
         { "head": "Reserva tu llamada", "body": "Si la estimación te convence, reservas una llamada de valoración. Pagas al reservar — si decides seguir adelante, ese importe se descuenta del total." },
-        { "head": "Nosotras gestionamos todo", "body": "Preparamos tu expediente, presentamos la documentación y hacemos seguimiento hasta la resolución. Tú solo esperas noticias." }
+        { "head": "Nosotros gestionamos todo", "body": "Preparamos tu expediente, presentamos la documentación y hacemos seguimiento hasta la resolución. Tú solo esperas noticias." }
       ]
     },
     "testimonials": {
       "title": "Lo que dicen quienes ya lo consiguieron",
       "items": [
-        { "initials": "MK", "name": "Moussa K.", "origin": "Senegal", "process": "Arraigo Social", "quote": "Llevaba 2 años intentando regularizarme. En pocas semanas con ellas tenía todo listo — y el precio fue mucho más bajo de lo que esperaba." },
-        { "initials": "VR", "name": "Valentina R.", "origin": "Colombia", "process": "Reagrupación Familiar", "quote": "Me explicaron todo sin tecnicismos. Por primera vez sentí que alguien de verdad entendía mi situación." },
-        { "initials": "AH", "name": "Ahmed H.", "origin": "Marruecos", "process": "Nacionalidad", "quote": "Conseguí la nacionalidad después de dos intentos fallidos por mi cuenta. Marta y Asmaa no dejaron un solo cabo suelto." }
+        { "initials": "DP", "name": "Daniela P.", "origin": "Venezuela", "process": "Homologación de estudios", "quote": "Necesitaba homologar mi título para poder trabajar en España. Me lo gestionaron todo paso a paso, y el precio fue claro desde el principio." },
+        { "initials": "VR", "name": "Valentina R.", "origin": "Colombia", "process": "Reagrupación Familiar", "quote": "Me explicaron todo sin tecnicismos. Por primera vez sentí que alguien entendía de verdad mi situación." },
+        { "initials": "AH", "name": "Ahmed H.", "origin": "Marruecos", "process": "Regularización extraordinaria", "quote": "Después de años en situación irregular, por fin conseguí regularizarme. El equipo no dejó un solo cabo suelto." }
       ]
     },
     "faq": {
       "title": "Preguntas frecuentes",
       "items": [
         { "q": "¿Necesito ir en persona a alguna oficina?", "a": "No. Gestionamos todo online desde cualquier parte de España." },
+        { "q": "¿Cómo sé cuánto me va a costar?", "a": "El precio es fijo y lo conoces desde el principio, sin sorpresas. Puedes hacer una estimación en un minuto con nuestro simulador." },
         { "q": "¿Qué pasa si me deniegan la solicitud?", "a": "Estudiamos los motivos y presentamos recurso. El seguimiento está incluido." },
-        { "q": "¿Aceptáis pago a plazos?", "a": "Sí, estudiamos tu situación y podemos fraccionar el pago." },
-        { "q": "¿Son abogadas colegiadas?", "a": "Sí, colegiadas en el ICAB (Ilustre Colegio de Abogados de Barcelona)." },
-        { "q": "¿Atienden en inglés?", "a": "Sí, atendemos en español e inglés." }
+        { "q": "¿Cuánto tarda mi trámite?", "a": "Depende del tipo de trámite. En la valoración te damos un tiempo estimado realista según casos similares al tuyo." },
+        { "q": "¿Aceptáis pago a plazos?", "a": "Sí. Estudiamos tu situación y podemos fraccionar el pago." },
+        { "q": "¿La llamada de valoración tiene coste?", "a": "Sí, pero si decides seguir adelante ese importe se descuenta del total." },
+        { "q": "¿Atendéis en inglés?", "a": "Sí, atendemos en español e inglés." }
       ]
     },
     "finalCta": {
       "title": "Da el primer paso hoy.",
-      "subtitle": "Descubre en un minuto cuánto costaría tu trámite — y cuánto puedes ahorrar."
+      "subtitle": "Descubre en un minuto cuánto costaría tu trámite."
     },
     "footer": {
       "tagline": "Tu permiso de residencia, sin estrés y sin sorpresas.",
-      "hours_label": "Horario",
-      "hours": "Lunes a viernes, 9h – 19h",
       "email_label": "Email",
-      "email": "hola@facilextranjeria.es",
-      "links": ["Aviso legal", "Política de privacidad", "Política de cookies"],
-      "copy": "© 2025 Fácil Extranjería. Abogadas colegiadas en Barcelona (ICAB)."
+      "email": "facilextranjeria@gmail.com",
+      "links": [],
+      "copy": "© 2026 Fácil Extranjería."
     },
     "cta": {
       "main": "¿Cuánto me costaría mi trámite?",
       "short": "¿Cuánto me costaría?",
       "navShort": "¿Cuánto me costaría mi trámite?",
-      "book": "Agendar mi llamada"
+      "book": "Agendar mi llamada",
+      "bookNow": "Agendar ahora"
     },
     "sim": {
       "title": "Simulador de trámite",
@@ -1930,7 +2151,7 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
         "honesty": "Esta es una estimación basada en casos similares al tuyo. El precio y el tiempo exactos dependen de tu situación concreta.",
         "notes": [
           "En la llamada entraremos en detalle sobre tu caso y determinaremos si eres candidato para este proceso. Si no lo eres, buscaremos contigo otras opciones.",
-          "El precio de esta consulta se descuenta del coste total si decides seguir adelante con nosotras.",
+          "El precio de esta consulta se descuenta del coste total si decides seguir adelante con nosotros.",
           "La llamada es una valoración de tu caso — no una promesa de ejecución ni un contrato."
         ],
         "ctaPrefix": "Reservar mi valoración —",
@@ -1951,24 +2172,23 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
       { "id": "visado",     "label": "Visado",                                 "price": "600€ – 850€", "savings": "hasta un 30%", "time": "2 – 4 meses",    "docs": ["Pasaporte", "Documentación específica según tipo de visado"], "consultPrice": 60 },
       { "id": "nomada",     "label": "Visado nómada digital",                  "price": "800€",        "savings": "hasta un 20%", "time": "2 – 3 meses",    "docs": ["Pasaporte", "Contrato de trabajo remoto", "Justificante de ingresos (mín. 2.646€/mes)", "Seguro médico privado"], "consultPrice": 75 },
       { "id": "renovacion", "label": "Renovación de residencia",               "price": "150€",        "savings": "hasta un 40%", "time": "2 – 3 meses",    "docs": ["TIE actual", "Pasaporte", "Nóminas últimos 3 meses", "Contrato de trabajo"], "consultPrice": 50 },
-      { "id": "consulta",   "label": "Consulta inicial",                       "price": "50€ – 75€",   "savings": "hasta un 50%", "time": "Cita en menos de 48h", "docs": ["Solo necesitas tus dudas — nosotras traemos las respuestas"], "consultPrice": 50 }
+      { "id": "consulta",   "label": "Consulta inicial",                       "price": "50€ – 75€",   "savings": "hasta un 50%", "time": "Cita en menos de 48h", "docs": ["Solo necesitas tus dudas — nosotros traemos las respuestas"], "consultPrice": 50 }
     ]
   },
   "en": {
     "nav": { "lang_es": "ES", "lang_en": "EN" },
     "hero": {
-      "kicker": "Law firm · Barcelona",
+      "kicker": "Legal advice · Spain",
       "word1": "Immigration.",
       "word2": "Simple.",
-      "word3": "Clear.",
+      "word3": "",
       "tagline": "Your residency permit, no stress and no surprises.",
-      "subtitle": "We are lawyers specialised in Spanish immigration law. Hundreds of cases resolved — NIE, arraigo, visas, citizenship. We walk you through it from start to finish. The best part? We don't inflate our prices. Transparent, no fine print, up to 40% below the market average.",
+      "subtitle": "We are lawyers specialised in Spanish immigration law. Hundreds of cases resolved (NIE, arraigo, visas, citizenship and more). We walk you through it from start to finish. The best part? Our prices are fair and transparent, no fine print, up to 40% below the market average.",
       "ghostCta": "How much would it cost?",
       "trust": [
         "+200 cases resolved",
-        "Licensed lawyers",
         "Reply within 24h",
-        "Consultation from €50"
+        "Consultation from €60"
       ]
     },
     "empathy": {
@@ -1983,12 +2203,24 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
     "why": {
       "title": "Why Fácil Extranjería?",
       "items": [
-        { "title": "Fair and transparent pricing", "body": "No surprises. The price we agree on is the price you pay." },
-        { "title": "Lawyers licensed by ICAB", "body": "Not agencies, not middlemen. Licensed lawyers with full legal responsibility." },
-        { "title": "Fully online, all of Spain", "body": "You don't need to come to any office. We handle your case from wherever you are." },
-        { "title": "Your case matters to us", "body": "If you're not a candidate for the process you want, we'll tell you and look for alternatives together." }
+        { "title": "Fair and transparent pricing", "body": "No surprises, no fine print. The price we agree on is the price you pay, up to 40% below the average." },
+        { "title": "Specialised lawyers", "body": "Not agencies, not middlemen. Immigration law professionals who take full responsibility for your case." },
+        { "title": "Fully online, all of Spain", "body": "You don't need to travel to any office. We handle your process from wherever you are." },
+        { "title": "Your case matters to us", "body": "If you're not a candidate for the process you want, we tell you clearly and look for alternatives together." }
       ],
       "link": "Find out how much your process would cost"
+    },
+    "about": {
+      "title": "Who we are",
+      "paras": [
+        "We are a firm specialised in immigration law. We help people from all over the world obtain their residency, their citizenship or whatever process they need to build their life in Spain.",
+        "We work closely with you and 100% online, with fair and transparent prices. No fine print, no surprises: from the start we tell you what you need, how much it costs and how long it takes. And if your case has no way forward, we tell you that honestly too."
+      ],
+      "stats": [
+        { "value": "+200", "label": "cases resolved" },
+        { "value": "100%", "label": "online, all of Spain" },
+        { "value": "24h", "label": "response time" }
+      ]
     },
     "how": {
       "title": "It's that simple",
@@ -2001,39 +2233,40 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
     "testimonials": {
       "title": "What clients who already made it say",
       "items": [
-        { "initials": "MK", "name": "Moussa K.", "origin": "Senegal", "process": "Arraigo Social", "quote": "I'd spent 2 years trying to get my papers in order. In a few weeks with them everything was ready — and the price was much lower than I expected." },
+        { "initials": "DP", "name": "Daniela P.", "origin": "Venezuela", "process": "Degree recognition", "quote": "I needed my degree recognised so I could work in Spain. They handled everything step by step, and the price was clear from the start." },
         { "initials": "VR", "name": "Valentina R.", "origin": "Colombia", "process": "Family Reunification", "quote": "They explained everything without legal jargon. For the first time I felt that someone truly understood my situation." },
-        { "initials": "AH", "name": "Ahmed H.", "origin": "Morocco", "process": "Citizenship", "quote": "I got citizenship after two failed attempts on my own. Marta and Asmaa didn't leave a single loose end." }
+        { "initials": "AH", "name": "Ahmed H.", "origin": "Morocco", "process": "Extraordinary regularisation", "quote": "After years in an irregular situation, I was finally able to regularise my status. The team didn't leave a single loose end." }
       ]
     },
     "faq": {
       "title": "Frequently asked",
       "items": [
         { "q": "Do I need to go to any office in person?", "a": "No. We handle everything online, from anywhere in Spain." },
+        { "q": "How do I know what it will cost?", "a": "The price is fixed and you know it from the start, with no surprises. You can get an estimate in a minute with our simulator." },
         { "q": "What happens if my application is denied?", "a": "We review the reasons and file an appeal. Follow-up is included." },
+        { "q": "How long does my process take?", "a": "It depends on the type of process. In the assessment we give you a realistic estimated time based on cases similar to yours." },
         { "q": "Do you accept payment in instalments?", "a": "Yes — we look at your situation and can split the payment." },
-        { "q": "Are you licensed lawyers?", "a": "Yes, licensed by ICAB (Barcelona Bar Association)." },
+        { "q": "Does the assessment call have a cost?", "a": "Yes, but if you decide to move forward that amount is deducted from the total." },
         { "q": "Do you assist in English?", "a": "Yes, we work in Spanish and English." }
       ]
     },
     "finalCta": {
       "title": "Take the first step today.",
-      "subtitle": "Find out in a minute how much your process would cost — and how much you can save."
+      "subtitle": "Find out in a minute how much your process would cost."
     },
     "footer": {
       "tagline": "Your residency permit, no stress and no surprises.",
-      "hours_label": "Hours",
-      "hours": "Monday to Friday, 9am – 7pm",
       "email_label": "Email",
-      "email": "hola@facilextranjeria.es",
-      "links": ["Legal notice", "Privacy policy", "Cookie policy"],
-      "copy": "© 2025 Fácil Extranjería. Lawyers licensed in Barcelona (ICAB)."
+      "email": "facilextranjeria@gmail.com",
+      "links": [],
+      "copy": "© 2026 Fácil Extranjería."
     },
     "cta": {
       "main": "How much would my process cost?",
       "short": "How much would it cost?",
       "navShort": "How much would my process cost?",
-      "book": "Book my call"
+      "book": "Book my call",
+      "bookNow": "Book now"
     },
     "sim": {
       "title": "Process simulator",
@@ -2359,7 +2592,7 @@ function Result({ t, process, onRestart, onClose }) {
 
       <div className="sim-result-footer">
         <button className="sim-result-cta" type="button" onClick={() => {
-          alert("→ Stripe + Calendly\n(Demo: en producción aquí se redirige al checkout.)");
+          window.open("https://calendly.com/facilextranjeria/30min", "_blank", "noopener");
         }}>
           <span className="sim-result-cta-glow" aria-hidden="true" />
           <span className="sim-result-cta-label">
@@ -2436,6 +2669,9 @@ window.Simulator = Simulator;
 
 const { useState, useEffect, useCallback, useRef } = React;
 
+const CALENDLY_URL = "https://calendly.com/facilextranjeria/30min";
+const openCalendly = () => window.open(CALENDLY_URL, "_blank", "noopener");
+
 /* ---------- Hooks ---------- */
 function useLang() {
   const [lang, setLang] = useState(() => {
@@ -2500,6 +2736,10 @@ function Navbar({ lang, setLang, openSim, t }) {
         </a>
 
         <div className="nav-right">
+          <button className="nav-cta-secondary" onClick={openCalendly} type="button" aria-label={t.cta.bookNow}>
+            <I.Calendar size={15} />
+            <span className="nav-cta-secondary-label">{t.cta.bookNow}</span>
+          </button>
           <button className={"nav-cta " + (scrolled ? "is-pulsing" : "")} onClick={openSim} type="button">
             <span className="nav-cta-glow" aria-hidden="true" />
             <span className="nav-cta-label">{t.cta.navShort}</span>
@@ -2541,6 +2781,8 @@ function Hero({ t, openSim }) {
           </defs>
           <rect width="100%" height="100%" fill="url(#hero-grid-pat)" />
         </svg>
+        <div className="hero-photo" />
+        <div className="hero-overlay" />
         <div className="hero-noise" />
       </div>
 
@@ -2564,6 +2806,10 @@ function Hero({ t, openSim }) {
             <span className="btn-glow-ring" aria-hidden="true" />
             <span>{t.cta.main}</span>
             <I.ArrowRight size={16} />
+          </button>
+          <button className="btn btn-secondary" onClick={openCalendly} type="button">
+            <I.Calendar size={16} />
+            <span>{t.cta.bookNow}</span>
           </button>
         </div>
 
@@ -2690,6 +2936,34 @@ function How({ t }) {
 
 }
 
+/* ---------- About (Quiénes somos) ---------- */
+function About({ t }) {
+  return (
+    <section className="about">
+      <div className="about-bg" aria-hidden="true">
+        <div className="about-blob about-blob-1" />
+        <div className="about-blob about-blob-2" />
+      </div>
+      <div className="container">
+        <div className="about-grid">
+          <Reveal className="about-text">
+            <h2 className="section-title">{t.about.title}</h2>
+            {t.about.paras.map((p, i) => <p key={i}>{p}</p>)}
+          </Reveal>
+          <Reveal className="about-stats" delay={120} as="ul">
+            {t.about.stats.map((s, i) =>
+            <li key={i} className="about-stat" style={{ "--d": `${i * 90}ms` }}>
+                <span className="about-stat-value">{s.value}</span>
+                <span className="about-stat-label">{s.label}</span>
+              </li>
+            )}
+          </Reveal>
+        </div>
+      </div>
+    </section>);
+
+}
+
 /* ---------- Trust band (testimonials + faq side-by-side) ---------- */
 function TrustBand({ t }) {
   return (
@@ -2778,27 +3052,32 @@ function FinalCTAFooter({ t, openSim }) {
         <Reveal className="final-cta-inner">
           <h2 className="final-cta-title">{t.finalCta.title}</h2>
           <p className="final-cta-sub">{t.finalCta.subtitle}</p>
-          <button className="btn btn-primary btn-glow btn-large" onClick={openSim} type="button">
-            <span className="btn-glow-ring" aria-hidden="true" />
-            <span>{t.cta.main}</span>
-            <I.ArrowRight size={16} />
-          </button>
+          <div className="final-cta-actions">
+            <button className="btn btn-primary btn-glow btn-large" onClick={openSim} type="button">
+              <span className="btn-glow-ring" aria-hidden="true" />
+              <span>{t.cta.main}</span>
+              <I.ArrowRight size={16} />
+            </button>
+            <button className="btn btn-secondary btn-large" onClick={openCalendly} type="button">
+              <I.Calendar size={16} />
+              <span>{t.cta.bookNow}</span>
+            </button>
+          </div>
         </Reveal>
 
         {/* Compact footer */}
         <div className="footer-mini">
           <div className="footer-mini-left">
             <span className="footer-mini-mark">FE</span>
-            <span className="footer-mini-text">© 2025 Fácil Extranjería · ICAB Barcelona</span>
+            <span className="footer-mini-text">{t.footer.copy}</span>
           </div>
           <div className="footer-mini-mid">
             <a href={"mailto:" + t.footer.email} className="footer-mini-link">{t.footer.email}</a>
-            <span className="footer-mini-sep" aria-hidden="true">·</span>
-            <span className="footer-mini-link">{t.footer.hours}</span>
           </div>
+          {t.footer.links && t.footer.links.length > 0 ?
           <ul className="footer-mini-links">
             {t.footer.links.map((l, i) => <li key={i}><a href="#">{l}</a></li>)}
-          </ul>
+          </ul> : null}
         </div>
       </div>
     </section>);
@@ -2827,6 +3106,7 @@ function App() {
       <main>
         <Hero t={t} openSim={openSim} />
         <EmpathyWhy t={t} openSim={openSim} />
+        <About t={t} />
         <How t={t} />
         <TrustBand t={t} />
         <FinalCTAFooter t={t} openSim={openSim} />
