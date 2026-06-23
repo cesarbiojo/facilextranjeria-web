@@ -2006,6 +2006,208 @@ a { color: inherit; text-decoration: none; }
 }
 
   </style>
+  <style>
+/* ===== Hero: badge "Abogadas Colegiadas" + nota descuento ===== */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 10px;
+  margin: 0 0 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(212,160,23,0.55);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 22px -16px rgba(0,0,0,0.6);
+}
+.hero-badge-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--grad-nav-cta);
+  color: var(--navy-deep);
+  flex: 0 0 auto;
+}
+.hero-badge-text { display: flex; flex-direction: column; gap: 3px; line-height: 1.15; }
+.hero-badge-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--gold-2);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.hero-badge-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--gold); flex: 0 0 auto; }
+.hero-badge-text strong {
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 0.1px;
+}
+.hero-deduct {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 14px 0 0;
+  max-width: 520px;
+  color: rgba(255,255,255,0.72);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.hero-deduct svg { flex: 0 0 auto; margin-top: 1px; color: var(--gold-2); }
+
+/* ===== Services section ===== */
+.services {
+  position: relative;
+  padding: 64px 0 60px;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.services-head { max-width: 720px; margin: 0 auto 30px; padding: 0 22px; text-align: center; }
+.services-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+.services-kicker-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--gold); }
+.services-title {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 800; line-height: 1.1;
+  color: var(--navy); margin: 0 0 12px; letter-spacing: -0.4px;
+}
+.services-sub { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; margin: 0; }
+
+/* Marquee */
+.marquee {
+  position: relative;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 6px 7px;
+  animation: marquee-scroll 70s linear infinite;
+}
+.marquee-track--svc { animation-duration: 68s; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; width: 100%; justify-content: center; }
+}
+
+/* Service cards — category groups, thin stroke, rectangular, equal height */
+.marquee-track--svc { align-items: stretch; } /* all cards match the tallest */
+.svc-card {
+  display: flex; flex-direction: column; gap: 14px;
+  width: 250px; flex: 0 0 auto;
+  padding: 17px 17px 18px; text-align: left;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.svc-card-head { display: flex; align-items: center; gap: 11px; }
+.svc-card-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; flex: 0 0 auto;
+  border-radius: 10px; background: var(--gold-tint); color: var(--navy);
+}
+.svc-card-tag {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase;
+  color: var(--gold);
+}
+.svc-card-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.svc-card-list li {
+  position: relative; padding-left: 14px;
+  font-size: 12.5px; font-weight: 600; color: var(--navy); line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.svc-card-list li::before {
+  content: ""; position: absolute; left: 0; top: 6px;
+  width: 5px; height: 5px; border-radius: 999px; background: var(--gold); flex: 0 0 auto;
+}
+
+.services-actions {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center;
+  margin-top: 30px; padding: 0 22px;
+}
+
+/* ===== Simulator Step 1 — category accordion ===== */
+.sim-q, .sim-q-sub { flex-shrink: 0; }
+.sim-acc {
+  display: flex; flex-direction: column; gap: 8px;
+  flex: 1; min-height: 0; overflow-y: auto;
+  padding: 2px 4px 8px 0;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+.sim-acc-group {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.15s ease;
+}
+.sim-acc-group.is-open { border-color: var(--gold); }
+.sim-acc-head {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 12px 14px;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+}
+.sim-acc-head:hover { background: var(--paper-2); }
+.sim-acc-head .sim-opt-icon { width: 34px; height: 34px; }
+.sim-acc-group.is-open .sim-acc-head .sim-opt-icon { background: var(--navy); color: var(--gold); }
+.sim-acc-head-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sim-acc-label { font-size: 14px; font-weight: 600; color: var(--navy); letter-spacing: -0.005em; line-height: 1.25; }
+.sim-acc-count { font-size: 11.5px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.1px; }
+.sim-acc-chev { color: var(--ink-3); display: inline-flex; transition: transform 0.2s ease, color 0.15s ease; transform: rotate(90deg); }
+.sim-acc-group.is-open .sim-acc-chev { transform: rotate(-90deg); color: var(--gold); }
+.sim-acc-group.is-single .sim-acc-chev { transform: none; }
+.sim-acc-body {
+  display: flex; flex-direction: column; gap: 1px;
+  padding: 3px 8px 8px;
+  margin-top: 2px;
+  border-top: 1px solid var(--line-2);
+}
+.sim-acc-item {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none; border: none; border-radius: 9px;
+  padding: 9px 6px;
+  font: inherit; text-align: left; cursor: pointer;
+  color: var(--ink); transition: background 0.15s ease;
+}
+.sim-acc-item:hover { background: var(--gold-tint); }
+.sim-acc-item-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--gold); justify-self: center; }
+.sim-acc-item-label { font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.sim-acc-item svg { color: var(--gold); }
+
+@media (max-width: 560px) {
+  .svc-card { width: 240px; }
+}
+  </style>
 </head>
 <body>
   <div id="root"></div>
@@ -2020,13 +2222,16 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
   "es": {
     "nav": { "lang_es": "ES", "lang_en": "EN" },
     "hero": {
-      "kicker": "Asesoría legal · España",
+      "kicker": "Asesoría Legal · España",
       "word1": "Extranjería.",
       "word2": "Fácil.",
       "word3": "",
       "tagline": "Tu permiso de residencia, sin estrés y sin sorpresas.",
       "subtitle": "Somos abogados especializados en extranjería. Cientos de casos resueltos (NIE, arraigo, visados, nacionalidad y más). Te acompañamos de principio a fin. ¿Lo mejor? Nuestros precios son justos y transparentes, sin letra pequeña, hasta un 40% menos que la media.",
       "ghostCta": "¿Cuánto me costaría?",
+      "badge": "Abogadas colegiadas",
+      "badgeSub": "Colegiadas en ejercicio",
+      "deduct": "El precio de la consulta se descuenta del coste total si decides seguir adelante con nosotros.",
       "trust": [
         "+200 casos resueltos",
         "Respuesta en 24h",
@@ -2115,7 +2320,15 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
       "close": "Cerrar",
       "progress": ["Es más fácil de lo que parece", "Esto es un buen comienzo", "Ya casi terminamos"],
       "step1": "¿Qué necesitas tramitar?",
-      "step1Sub": "Elige el trámite que más se acerca a tu caso.",
+      "step1Sub": "Elige la categoría y luego tu trámite concreto.",
+      "step1GroupLabel": "Tipo de trámite",
+      "step1GroupPh": "Elige una categoría…",
+      "step1ServiceLabel": "Trámite concreto",
+      "step1ServicePh": "Elige tu trámite…",
+      "step1ServicePhEmpty": "Primero elige una categoría",
+      "typeOne": "tipo de trámite",
+      "typesMany": "tipos de trámite",
+      "continue": "Continuar",
       "step2": "¿En qué situación estás ahora mismo?",
       "step2Opts": [
         "En España — sin documentación en regla",
@@ -2157,34 +2370,80 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
         "ctaPrefix": "Reservar mi valoración —",
         "ctaSuffix": "€",
         "restart": "Volver a empezar",
-        "consultPrice": 50
+        "consultPrice": 60
       },
       "back": "Atrás",
       "step": "Paso"
     },
-    "processes": [
-      { "id": "nie",        "label": "NIE o TIE",                              "price": "150€ – 200€", "savings": "hasta un 40%", "time": "2 – 4 semanas",  "docs": ["Pasaporte en vigor", "Formulario EX-15", "Tasa 790-012", "Foto reciente"], "consultPrice": 50 },
-      { "id": "social",     "label": "Arraigo Social",                         "price": "600€ – 800€", "savings": "hasta un 35%", "time": "4 – 8 meses",    "docs": ["Pasaporte", "Padrón 3 años", "Antecedentes penales", "Informe de arraigo (ayuntamiento)"], "consultPrice": 60 },
-      { "id": "laboral",    "label": "Arraigo Laboral",                        "price": "600€ – 800€", "savings": "hasta un 35%", "time": "3 – 6 meses",    "docs": ["Pasaporte", "Contrato de trabajo", "Informe vida laboral empresa", "Antecedentes penales"], "consultPrice": 60 },
-      { "id": "familiar",   "label": "Arraigo Familiar",                       "price": "600€ – 800€", "savings": "hasta un 35%", "time": "3 – 6 meses",    "docs": ["Pasaporte", "Libro de familia o sentencia judicial", "Antecedentes penales"], "consultPrice": 60 },
-      { "id": "reagrup",    "label": "Reagrupación Familiar",                  "price": "700€",        "savings": "hasta un 30%", "time": "4 – 8 meses",    "docs": ["Pasaporte del reagrupante", "TIE en vigor", "Contrato de trabajo", "Documentos de parentesco"], "consultPrice": 60 },
-      { "id": "nacional",   "label": "Nacionalidad Española",                  "price": "850€",        "savings": "hasta un 30%", "time": "12 – 24 meses",  "docs": ["Pasaporte", "TIE", "Antecedentes penales", "Certificado de nacimiento apostillado", "Diploma DELE A2", "Diploma CCSE"], "consultPrice": 75 },
-      { "id": "visado",     "label": "Visado",                                 "price": "600€ – 850€", "savings": "hasta un 30%", "time": "2 – 4 meses",    "docs": ["Pasaporte", "Documentación específica según tipo de visado"], "consultPrice": 60 },
-      { "id": "nomada",     "label": "Visado nómada digital",                  "price": "800€",        "savings": "hasta un 20%", "time": "2 – 3 meses",    "docs": ["Pasaporte", "Contrato de trabajo remoto", "Justificante de ingresos (mín. 2.646€/mes)", "Seguro médico privado"], "consultPrice": 75 },
-      { "id": "renovacion", "label": "Renovación de residencia",               "price": "150€",        "savings": "hasta un 40%", "time": "2 – 3 meses",    "docs": ["TIE actual", "Pasaporte", "Nóminas últimos 3 meses", "Contrato de trabajo"], "consultPrice": 50 },
-      { "id": "consulta",   "label": "Consulta inicial",                       "price": "50€ – 75€",   "savings": "hasta un 50%", "time": "Cita en menos de 48h", "docs": ["Solo necesitas tus dudas — nosotros traemos las respuestas"], "consultPrice": 50 }
+    "services": {
+      "kicker": "Nuestros servicios",
+      "title": "Tramitamos todo tipo de residencia",
+      "subtitle": "Arraigos, trabajo, familia, estudios, talento, nacionalidad y más. Si tu caso no aparece, escríbenos: lo más probable es que también lo hagamos.",
+      "cta": "Calcular el precio de mi trámite",
+      "viewAll": "Ver todos por categoría",
+      "viewLess": "Ocultar categorías",
+      "itemsLabel": "trámites",
+      "fromLabel": "desde"
+    },
+    "serviceGroups": [
+      { "id": "arraigo", "label": "Arraigo", "icon": "Home", "services": [
+        { "id": "arr_sociolaboral",     "label": "Arraigo sociolaboral",                        "price": "600€ – 800€",   "savings": "hasta un 35%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Padrón histórico", "Contrato de trabajo (mín. 30h/sem)", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "arr_socioformativo",   "label": "Arraigo socioformativo",                      "price": "600€ – 800€",   "savings": "hasta un 35%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Padrón", "Matrícula en formación reglada", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "arr_social_vinculos",  "label": "Arraigo social con vínculos familiares",      "price": "600€ – 800€",   "savings": "hasta un 35%", "time": "4 – 8 meses", "docs": ["Pasaporte", "Padrón 3 años", "Vínculo con familiar residente", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "arr_social_medios",    "label": "Arraigo social con medios económicos propios","price": "600€ – 800€",   "savings": "hasta un 35%", "time": "4 – 8 meses", "docs": ["Pasaporte", "Padrón 3 años", "Justificante de medios económicos", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "arr_social_negocio",   "label": "Arraigo social con negocio propio (autónomo)","price": "700€ – 900€",   "savings": "hasta un 30%", "time": "4 – 8 meses", "docs": ["Pasaporte", "Padrón 3 años", "Plan de negocio / alta de autónomo", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "arr_familiar",         "label": "Arraigo familiar",                            "price": "600€ – 800€",   "savings": "hasta un 35%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Vínculo familiar (libro de familia/sentencia)", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "arr_segunda",          "label": "Arraigo de segunda oportunidad",              "price": "600€ – 800€",   "savings": "hasta un 35%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Acreditación de residencia previa", "Antecedentes penales"], "consultPrice": 60 }
+      ]},
+      { "id": "trabajo", "label": "Trabajo y residencia inicial", "icon": "Briefcase", "services": [
+        { "id": "trab_ajena",  "label": "Residencia y trabajo por cuenta ajena (inicial)", "price": "700€ – 900€",   "savings": "hasta un 30%", "time": "1 – 3 meses", "docs": ["Pasaporte", "Oferta / contrato de trabajo", "Titulación (si aplica)", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "trab_propia", "label": "Residencia y trabajo por cuenta propia (inicial)", "price": "800€ – 1.000€", "savings": "hasta un 30%", "time": "2 – 4 meses", "docs": ["Pasaporte", "Plan de negocio", "Acreditación de inversión y solvencia", "Antecedentes penales"], "consultPrice": 60 }
+      ]},
+      { "id": "familia", "label": "Familia", "icon": "Users", "services": [
+        { "id": "fam_reagrupacion", "label": "Reagrupación familiar",                                   "price": "700€",        "savings": "hasta un 30%", "time": "4 – 8 meses", "docs": ["Pasaporte del reagrupante", "TIE en vigor", "Contrato de trabajo", "Documentos de parentesco"], "consultPrice": 60 },
+        { "id": "fam_espanoles",    "label": "Residencia de familiar de españoles",                    "price": "700€ – 900€", "savings": "hasta un 30%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Vínculo con ciudadano español", "Padrón conjunto", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "fam_excepcion",    "label": "Residencia con excepción de la autorización de trabajo",  "price": "600€ – 800€", "savings": "hasta un 30%", "time": "1 – 3 meses", "docs": ["Pasaporte", "Acreditación del supuesto de excepción", "Antecedentes penales"], "consultPrice": 60 }
+      ]},
+      { "id": "larga", "label": "Larga duración", "icon": "Shield", "services": [
+        { "id": "larga_nacional", "label": "Residencia de larga duración",      "price": "500€ – 700€", "savings": "hasta un 35%", "time": "2 – 4 meses", "docs": ["Pasaporte", "TIE en vigor", "5 años de residencia legal", "Padrón"], "consultPrice": 60 },
+        { "id": "larga_ue",       "label": "Residencia de larga duración – UE", "price": "500€ – 700€", "savings": "hasta un 35%", "time": "2 – 4 meses", "docs": ["Pasaporte", "TIE en vigor", "5 años de residencia legal", "Justificante de medios"], "consultPrice": 60 }
+      ]},
+      { "id": "estudios", "label": "Estudios y prácticas", "icon": "Book", "services": [
+        { "id": "est_estudios",  "label": "Estancia por estudios (desde España)", "price": "400€ – 600€", "savings": "hasta un 40%", "time": "1 – 3 meses", "docs": ["Pasaporte", "Admisión en centro de estudios", "Medios económicos", "Seguro médico"], "consultPrice": 60 },
+        { "id": "est_practicas", "label": "Prácticas profesionales",              "price": "500€ – 700€", "savings": "hasta un 35%", "time": "1 – 3 meses", "docs": ["Pasaporte", "Convenio de prácticas", "Titulación", "Seguro médico"], "consultPrice": 60 }
+      ]},
+      { "id": "talento", "label": "Talento y alta cualificación", "icon": "Award", "services": [
+        { "id": "tal_emprendedores", "label": "Emprendedores",                              "price": "900€ – 1.200€", "savings": "hasta un 25%", "time": "20 – 45 días", "docs": ["Pasaporte", "Proyecto emprendedor", "Informe favorable (ENISA)", "Medios económicos"], "consultPrice": 60 },
+        { "id": "tal_pac",           "label": "Profesionales altamente cualificados (PAC)", "price": "800€ – 1.100€", "savings": "hasta un 25%", "time": "20 – 45 días", "docs": ["Pasaporte", "Contrato altamente cualificado", "Titulación superior", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "tal_investigadores","label": "Investigadores",                             "price": "800€ – 1.100€", "savings": "hasta un 25%", "time": "20 – 45 días", "docs": ["Pasaporte", "Convenio de acogida", "Titulación", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "tal_ict",           "label": "Movilidad intraempresarial (ICT)",           "price": "900€ – 1.200€", "savings": "hasta un 25%", "time": "20 – 45 días", "docs": ["Pasaporte", "Carta de traslado de la empresa", "Relación laboral previa", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "tal_audiovisual",   "label": "Sector audiovisual y cultural",              "price": "800€ – 1.100€", "savings": "hasta un 25%", "time": "20 – 45 días", "docs": ["Pasaporte", "Contrato o proyecto audiovisual", "Medios económicos", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "tal_nomada",        "label": "Nómadas digitales (teletrabajo internacional)","price": "800€",         "savings": "hasta un 20%", "time": "20 – 45 días", "docs": ["Pasaporte", "Contrato de trabajo remoto", "Justificante de ingresos (mín. 2.646€/mes)", "Seguro médico privado"], "consultPrice": 60 }
+      ]},
+      { "id": "especial", "label": "Humanitaria y casos especiales", "icon": "Heart", "services": [
+        { "id": "esp_nolucrativa",  "label": "Residencia no lucrativa (renovación)",        "price": "300€ – 500€", "savings": "hasta un 40%", "time": "1 – 2 meses", "docs": ["Pasaporte", "TIE en vigor", "Justificante de medios económicos", "Seguro médico"], "consultPrice": 60 },
+        { "id": "esp_humanitaria",  "label": "Residencia por razones humanitarias",         "price": "600€ – 800€", "savings": "hasta un 30%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Acreditación del supuesto humanitario", "Antecedentes penales"], "consultPrice": 60 },
+        { "id": "esp_busqueda",     "label": "Residencia para búsqueda de empleo",          "price": "500€ – 700€", "savings": "hasta un 30%", "time": "1 – 3 meses", "docs": ["Pasaporte", "Titulación / cualificación", "Medios económicos", "Seguro médico"], "consultPrice": 60 },
+        { "id": "esp_colaboracion", "label": "Residencia por colaboración con autoridades",  "price": "600€ – 800€", "savings": "hasta un 30%", "time": "3 – 6 meses", "docs": ["Pasaporte", "Acreditación de la colaboración", "Antecedentes penales"], "consultPrice": 60 }
+      ]},
+      { "id": "nacionalidad", "label": "Nacionalidad", "icon": "Flag", "services": [
+        { "id": "nac_residencia", "label": "Nacionalidad española por residencia", "price": "850€", "savings": "hasta un 30%", "time": "12 – 24 meses", "docs": ["Pasaporte", "TIE", "Antecedentes penales", "Certificado de nacimiento apostillado", "Diploma DELE A2", "Diploma CCSE"], "consultPrice": 60 }
+      ]}
     ]
   },
   "en": {
     "nav": { "lang_es": "ES", "lang_en": "EN" },
     "hero": {
-      "kicker": "Legal advice · Spain",
+      "kicker": "Legal Advice · Spain",
       "word1": "Immigration.",
       "word2": "Simple.",
       "word3": "",
       "tagline": "Your residency permit, no stress and no surprises.",
       "subtitle": "We are lawyers specialised in Spanish immigration law. Hundreds of cases resolved (NIE, arraigo, visas, citizenship and more). We walk you through it from start to finish. The best part? Our prices are fair and transparent, no fine print, up to 40% below the market average.",
       "ghostCta": "How much would it cost?",
+      "badge": "Licensed Lawyers",
+      "badgeSub": "Registered with the Bar",
+      "deduct": "The consultation fee is deducted from the total cost if you decide to move forward with us.",
       "trust": [
         "+200 cases resolved",
         "Reply within 24h",
@@ -2273,7 +2532,15 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
       "close": "Close",
       "progress": ["It's simpler than it looks", "This is a good start", "Almost there"],
       "step1": "What do you need to process?",
-      "step1Sub": "Pick the process closest to your case.",
+      "step1Sub": "Pick the category, then your specific process.",
+      "step1GroupLabel": "Type of process",
+      "step1GroupPh": "Choose a category…",
+      "step1ServiceLabel": "Specific process",
+      "step1ServicePh": "Choose your process…",
+      "step1ServicePhEmpty": "Choose a category first",
+      "typeOne": "process type",
+      "typesMany": "process types",
+      "continue": "Continue",
       "step2": "Where are you right now?",
       "step2Opts": [
         "In Spain — without paperwork in order",
@@ -2315,22 +2582,65 @@ window.TRANSLATIONS = /*EDITMODE-BEGIN*/{
         "ctaPrefix": "Book my assessment —",
         "ctaSuffix": "€",
         "restart": "Start over",
-        "consultPrice": 50
+        "consultPrice": 60
       },
       "back": "Back",
       "step": "Step"
     },
-    "processes": [
-      { "id": "nie",        "label": "NIE or TIE",                              "price": "€150 – €200", "savings": "up to 40%", "time": "2 – 4 weeks",    "docs": ["Valid passport", "Form EX-15", "Tax form 790-012", "Recent photo"], "consultPrice": 50 },
-      { "id": "social",     "label": "Arraigo Social",                          "price": "€600 – €800", "savings": "up to 35%", "time": "4 – 8 months",   "docs": ["Passport", "3-year padrón", "Criminal record check", "Town hall arraigo report"], "consultPrice": 60 },
-      { "id": "laboral",    "label": "Arraigo Laboral",                         "price": "€600 – €800", "savings": "up to 35%", "time": "3 – 6 months",   "docs": ["Passport", "Employment contract", "Employer work-life report", "Criminal record check"], "consultPrice": 60 },
-      { "id": "familiar",   "label": "Arraigo Familiar",                        "price": "€600 – €800", "savings": "up to 35%", "time": "3 – 6 months",   "docs": ["Passport", "Family book or court ruling", "Criminal record check"], "consultPrice": 60 },
-      { "id": "reagrup",    "label": "Family Reunification",                    "price": "€700",        "savings": "up to 30%", "time": "4 – 8 months",   "docs": ["Sponsor's passport", "Valid TIE", "Employment contract", "Proof of family relationship"], "consultPrice": 60 },
-      { "id": "nacional",   "label": "Spanish Citizenship",                     "price": "€850",        "savings": "up to 30%", "time": "12 – 24 months", "docs": ["Passport", "TIE", "Criminal record check", "Apostilled birth certificate", "DELE A2 diploma", "CCSE diploma"], "consultPrice": 75 },
-      { "id": "visado",     "label": "Visa",                                    "price": "€600 – €850", "savings": "up to 30%", "time": "2 – 4 months",   "docs": ["Passport", "Specific docs depending on visa type"], "consultPrice": 60 },
-      { "id": "nomada",     "label": "Digital nomad visa",                      "price": "€800",        "savings": "up to 20%", "time": "2 – 3 months",   "docs": ["Passport", "Remote work contract", "Proof of income (min. €2,646/month)", "Private health insurance"], "consultPrice": 75 },
-      { "id": "renovacion", "label": "Residency renewal",                       "price": "€150",        "savings": "up to 40%", "time": "2 – 3 months",   "docs": ["Current TIE", "Passport", "Last 3 payslips", "Employment contract"], "consultPrice": 50 },
-      { "id": "consulta",   "label": "Initial consultation",                    "price": "€50 – €75",   "savings": "up to 50%", "time": "Appointment within 48h", "docs": ["Just bring your questions — we bring the answers"], "consultPrice": 50 }
+    "services": {
+      "kicker": "Our services",
+      "title": "We handle every type of residency",
+      "subtitle": "Arraigo, work, family, studies, talent, citizenship and more. If your case isn't listed, write to us — chances are we handle it too.",
+      "cta": "Calculate the price of my process",
+      "viewAll": "View all by category",
+      "viewLess": "Hide categories",
+      "itemsLabel": "processes",
+      "fromLabel": "from"
+    },
+    "serviceGroups": [
+      { "id": "arraigo", "label": "Arraigo (rooted residence)", "icon": "Home", "services": [
+        { "id": "arr_sociolaboral",     "label": "Arraigo sociolaboral (work-based)",            "price": "€600 – €800",   "savings": "up to 35%", "time": "3 – 6 months", "docs": ["Passport", "Historical padrón", "Employment contract (min. 30h/week)", "Criminal record check"], "consultPrice": 60 },
+        { "id": "arr_socioformativo",   "label": "Arraigo socioformativo (training-based)",      "price": "€600 – €800",   "savings": "up to 35%", "time": "3 – 6 months", "docs": ["Passport", "Padrón", "Enrolment in official training", "Criminal record check"], "consultPrice": 60 },
+        { "id": "arr_social_vinculos",  "label": "Arraigo social with family ties",              "price": "€600 – €800",   "savings": "up to 35%", "time": "4 – 8 months", "docs": ["Passport", "3-year padrón", "Tie to resident relative", "Criminal record check"], "consultPrice": 60 },
+        { "id": "arr_social_medios",    "label": "Arraigo social with own financial means",      "price": "€600 – €800",   "savings": "up to 35%", "time": "4 – 8 months", "docs": ["Passport", "3-year padrón", "Proof of financial means", "Criminal record check"], "consultPrice": 60 },
+        { "id": "arr_social_negocio",   "label": "Arraigo social with own business (self-employed)","price": "€700 – €900","savings": "up to 30%", "time": "4 – 8 months", "docs": ["Passport", "3-year padrón", "Business plan / self-employed registration", "Criminal record check"], "consultPrice": 60 },
+        { "id": "arr_familiar",         "label": "Arraigo familiar",                             "price": "€600 – €800",   "savings": "up to 35%", "time": "3 – 6 months", "docs": ["Passport", "Family tie (family book/court ruling)", "Criminal record check"], "consultPrice": 60 },
+        { "id": "arr_segunda",          "label": "Arraigo de segunda oportunidad (second chance)","price": "€600 – €800",  "savings": "up to 35%", "time": "3 – 6 months", "docs": ["Passport", "Proof of previous residence", "Criminal record check"], "consultPrice": 60 }
+      ]},
+      { "id": "trabajo", "label": "Initial work & residence", "icon": "Briefcase", "services": [
+        { "id": "trab_ajena",  "label": "Initial work & residence (employed)",       "price": "€700 – €900",   "savings": "up to 30%", "time": "1 – 3 months", "docs": ["Passport", "Job offer / employment contract", "Qualification (if applicable)", "Criminal record check"], "consultPrice": 60 },
+        { "id": "trab_propia", "label": "Initial work & residence (self-employed)",  "price": "€800 – €1,000", "savings": "up to 30%", "time": "2 – 4 months", "docs": ["Passport", "Business plan", "Proof of investment and solvency", "Criminal record check"], "consultPrice": 60 }
+      ]},
+      { "id": "familia", "label": "Family", "icon": "Users", "services": [
+        { "id": "fam_reagrupacion", "label": "Family reunification",                       "price": "€700",        "savings": "up to 30%", "time": "4 – 8 months", "docs": ["Sponsor's passport", "Valid TIE", "Employment contract", "Proof of family relationship"], "consultPrice": 60 },
+        { "id": "fam_espanoles",    "label": "Residence as family of Spanish nationals",   "price": "€700 – €900", "savings": "up to 30%", "time": "3 – 6 months", "docs": ["Passport", "Tie to Spanish citizen", "Joint padrón", "Criminal record check"], "consultPrice": 60 },
+        { "id": "fam_excepcion",    "label": "Residence with work-authorisation exception","price": "€600 – €800", "savings": "up to 30%", "time": "1 – 3 months", "docs": ["Passport", "Proof of the exception grounds", "Criminal record check"], "consultPrice": 60 }
+      ]},
+      { "id": "larga", "label": "Long-term residence", "icon": "Shield", "services": [
+        { "id": "larga_nacional", "label": "Long-term residence",        "price": "€500 – €700", "savings": "up to 35%", "time": "2 – 4 months", "docs": ["Passport", "Valid TIE", "5 years of legal residence", "Padrón"], "consultPrice": 60 },
+        { "id": "larga_ue",       "label": "Long-term residence – EU",   "price": "€500 – €700", "savings": "up to 35%", "time": "2 – 4 months", "docs": ["Passport", "Valid TIE", "5 years of legal residence", "Proof of means"], "consultPrice": 60 }
+      ]},
+      { "id": "estudios", "label": "Studies & internships", "icon": "Book", "services": [
+        { "id": "est_estudios",  "label": "Student stay (filed from Spain)", "price": "€400 – €600", "savings": "up to 40%", "time": "1 – 3 months", "docs": ["Passport", "Admission to a study centre", "Financial means", "Health insurance"], "consultPrice": 60 },
+        { "id": "est_practicas", "label": "Professional internships",         "price": "€500 – €700", "savings": "up to 35%", "time": "1 – 3 months", "docs": ["Passport", "Internship agreement", "Qualification", "Health insurance"], "consultPrice": 60 }
+      ]},
+      { "id": "talento", "label": "Talent & highly qualified", "icon": "Award", "services": [
+        { "id": "tal_emprendedores", "label": "Entrepreneurs",                           "price": "€900 – €1,200", "savings": "up to 25%", "time": "20 – 45 days", "docs": ["Passport", "Entrepreneurial project", "Favourable report (ENISA)", "Financial means"], "consultPrice": 60 },
+        { "id": "tal_pac",           "label": "Highly qualified professionals (PAC)",     "price": "€800 – €1,100", "savings": "up to 25%", "time": "20 – 45 days", "docs": ["Passport", "Highly qualified contract", "Higher-education qualification", "Criminal record check"], "consultPrice": 60 },
+        { "id": "tal_investigadores","label": "Researchers",                              "price": "€800 – €1,100", "savings": "up to 25%", "time": "20 – 45 days", "docs": ["Passport", "Hosting agreement", "Qualification", "Criminal record check"], "consultPrice": 60 },
+        { "id": "tal_ict",           "label": "Intra-company transfer (ICT)",             "price": "€900 – €1,200", "savings": "up to 25%", "time": "20 – 45 days", "docs": ["Passport", "Company transfer letter", "Prior employment relationship", "Criminal record check"], "consultPrice": 60 },
+        { "id": "tal_audiovisual",   "label": "Audiovisual & cultural sector",            "price": "€800 – €1,100", "savings": "up to 25%", "time": "20 – 45 days", "docs": ["Passport", "Audiovisual contract or project", "Financial means", "Criminal record check"], "consultPrice": 60 },
+        { "id": "tal_nomada",        "label": "Digital nomads (international remote work)","price": "€800",          "savings": "up to 20%", "time": "20 – 45 days", "docs": ["Passport", "Remote work contract", "Proof of income (min. €2,646/month)", "Private health insurance"], "consultPrice": 60 }
+      ]},
+      { "id": "especial", "label": "Humanitarian & special cases", "icon": "Heart", "services": [
+        { "id": "esp_nolucrativa",  "label": "Non-lucrative residence (renewal)",        "price": "€300 – €500", "savings": "up to 40%", "time": "1 – 2 months", "docs": ["Passport", "Valid TIE", "Proof of financial means", "Health insurance"], "consultPrice": 60 },
+        { "id": "esp_humanitaria",  "label": "Residence on humanitarian grounds",        "price": "€600 – €800", "savings": "up to 30%", "time": "3 – 6 months", "docs": ["Passport", "Proof of humanitarian grounds", "Criminal record check"], "consultPrice": 60 },
+        { "id": "esp_busqueda",     "label": "Residence for job-seeking",                "price": "€500 – €700", "savings": "up to 30%", "time": "1 – 3 months", "docs": ["Passport", "Qualification", "Financial means", "Health insurance"], "consultPrice": 60 },
+        { "id": "esp_colaboracion", "label": "Residence for collaboration with authorities","price": "€600 – €800","savings": "up to 30%", "time": "3 – 6 months", "docs": ["Passport", "Proof of the collaboration", "Criminal record check"], "consultPrice": 60 }
+      ]},
+      { "id": "nacionalidad", "label": "Citizenship", "icon": "Flag", "services": [
+        { "id": "nac_residencia", "label": "Spanish citizenship by residence", "price": "€850", "savings": "up to 30%", "time": "12 – 24 months", "docs": ["Passport", "TIE", "Criminal record check", "Apostilled birth certificate", "DELE A2 diploma", "CCSE diploma"], "consultPrice": 60 }
+      ]}
     ]
   }
 }/*EDITMODE-END*/;
@@ -2392,6 +2702,9 @@ const I = {
   Laptop: (p) => <Icon {...p}><rect x="4" y="5" width="16" height="11" rx="1.5" /><line x1="2" y1="20" x2="22" y2="20" /></Icon>,
   Refresh: (p) => <Icon {...p}><path d="M4 4v6h6" /><path d="M20 20v-6h-6" /><path d="M5 14a8 8 0 0 0 14 2" /><path d="M19 10A8 8 0 0 0 5 8" /></Icon>,
   Sparkle: (p) => <Icon {...p}><path d="M12 3v4" /><path d="M12 17v4" /><path d="M3 12h4" /><path d="M17 12h4" /><path d="M6 6l2.5 2.5" /><path d="M15.5 15.5L18 18" /><path d="M6 18l2.5-2.5" /><path d="M15.5 8.5L18 6" /></Icon>,
+  Book: (p) => <Icon {...p}><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5z" /><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /></Icon>,
+  Award: (p) => <Icon {...p}><circle cx="12" cy="9" r="6" /><path d="M9 14.5L7.5 22l4.5-2.5L16.5 22 15 14.5" /></Icon>,
+  Flag: (p) => <Icon {...p}><path d="M5 21V4" /><path d="M5 4h11l-1.5 3.5L16 11H5" /></Icon>,
 };
 
 window.I = I;
@@ -2447,7 +2760,7 @@ function StepHeader({ t, stepIdx, total = 3 }) {
 function OptionCard({ iconName, label, sublabel, onClick }) {
   const Comp = I[iconName] || I.Doc;
   return (
-    <button className="sim-opt" onClick={onClick} type="button" style={{ borderWidth: "3px 1px 1px" }}>
+    <button className="sim-opt" onClick={onClick} type="button">
       <span className="sim-opt-icon"><Comp size={22} /></span>
       <span className="sim-opt-text">
         <span className="sim-opt-label">{label}</span>
@@ -2458,16 +2771,85 @@ function OptionCard({ iconName, label, sublabel, onClick }) {
 
 }
 
-function Step1({ t, onPick }) {
+function Step1({ t, onPick, preset }) {
+  const groups = t.serviceGroups;
+  const [openId, setOpenId] = useState(preset && preset.groupId ? preset.groupId : null);
+  const accRef = useRef(null);
+  const groupRefs = useRef({});
+
+  // If a specific service was pre-selected (e.g. clicked from the website), skip ahead.
+  useEffect(() => {
+    if (preset && preset.serviceId) {
+      for (const g of groups) {
+        const s = g.services.find((x) => x.id === preset.serviceId);
+        if (s) {onPick(s);return;}
+      }
+    }
+  }, []);
+
+  // Auto-scroll so the just-opened category (and its options) come into view.
+  useEffect(() => {
+    if (!openId) return;
+    const cont = accRef.current;
+    const el = groupRefs.current[openId];
+    if (!cont || !el) return;
+    const id = requestAnimationFrame(() => {
+      const er = el.getBoundingClientRect();
+      const cr = cont.getBoundingClientRect();
+      if (el.offsetHeight > cont.clientHeight) {
+        cont.scrollBy({ top: er.top - cr.top - 6, behavior: "smooth" });
+      } else if (er.bottom > cr.bottom) {
+        cont.scrollBy({ top: er.bottom - cr.bottom + 8, behavior: "smooth" });
+      } else if (er.top < cr.top) {
+        cont.scrollBy({ top: er.top - cr.top - 8, behavior: "smooth" });
+      }
+    });
+    return () => cancelAnimationFrame(id);
+  }, [openId]);
+
   return (
     <div className="sim-step">
       <StepHeader t={t} stepIdx={0} />
       <h2 className="sim-q">{t.sim.step1}</h2>
       <p className="sim-q-sub" style={{ margin: "-3px 0px 14px" }}>{t.sim.step1Sub}</p>
-      <div className="sim-opts sim-opts-grid" style={{ padding: "7px 4px 0px 0px" }}>
-        {t.processes.map((p) =>
-        <OptionCard key={p.id} iconName={PROCESS_ICON[p.id]} label={p.label} onClick={() => onPick(p)} />
-        )}
+
+      <div className="sim-acc" ref={accRef}>
+        {groups.map((g) => {
+          const Ico = I[g.icon] || I.Doc;
+          const single = g.services.length === 1;
+          const isOpen = !single && openId === g.id;
+          const countLabel = g.services.length + " " + (single ? t.sim.typeOne : t.sim.typesMany);
+          return (
+            <div
+              key={g.id}
+              ref={(el) => {groupRefs.current[g.id] = el;}}
+              className={"sim-acc-group " + (isOpen ? "is-open " : "") + (single ? "is-single" : "")}>
+              <button
+                className="sim-acc-head"
+                type="button"
+                aria-expanded={single ? undefined : isOpen}
+                onClick={() => single ? onPick(g.services[0]) : setOpenId(isOpen ? null : g.id)}>
+                <span className="sim-opt-icon"><Ico size={20} /></span>
+                <span className="sim-acc-head-text">
+                  <span className="sim-acc-label">{g.label}</span>
+                  <span className="sim-acc-count">{countLabel}</span>
+                </span>
+                <span className="sim-acc-chev"><I.ArrowRight size={18} /></span>
+              </button>
+              {isOpen &&
+              <div className="sim-acc-body">
+                {g.services.map((s) =>
+                <button key={s.id} className="sim-acc-item" type="button" onClick={() => onPick(s)}>
+                    <span className="sim-acc-item-dot" />
+                    <span className="sim-acc-item-label">{s.label}</span>
+                    <I.ArrowRight size={15} />
+                  </button>
+                )}
+              </div>
+              }
+            </div>);
+
+        })}
       </div>
     </div>);
 
@@ -2608,7 +2990,7 @@ function Result({ t, process, onRestart, onClose }) {
 
 }
 
-function Simulator({ open, onClose, t }) {
+function Simulator({ open, onClose, t, preset }) {
   const [step, setStep] = useState(0); // 0..2 questions, 3 analyzing, 4 result
   const [process, setProcess] = useState(null);
   const [, setSit] = useState(null);
@@ -2650,7 +3032,7 @@ function Simulator({ open, onClose, t }) {
         </header>
 
         <div className="sim-body" ref={scrollRef}>
-          {step === 0 && <Step1 t={t} onPick={(p) => {setProcess(p);setStep(1);}} />}
+          {step === 0 && <Step1 t={t} preset={preset} onPick={(p) => {setProcess(p);setStep(1);}} />}
           {step === 1 && <Step2 t={t} onBack={() => setStep(0)} onPick={(i) => {setSit(i);setStep(2);}} />}
           {step === 2 && <Step3 t={t} onBack={() => setStep(1)} onPick={(i) => {setOrigin(i);setStep(3);}} />}
           {step === 3 && <Analyzing t={t} onDone={() => setStep(4)} />}
@@ -2787,10 +3169,13 @@ function Hero({ t, openSim }) {
       </div>
 
       <div className="hero-inner">
-        <span className="hero-kicker">
-          <span className="hero-kicker-dot" />
-          {t.hero.kicker}
-        </span>
+        <div className="hero-badge">
+          <span className="hero-badge-ico"><I.Scale size={19} stroke="currentColor" strokeWidth={1.8} /></span>
+          <span className="hero-badge-text">
+            <span className="hero-badge-eyebrow"><span className="hero-badge-dot" />{t.hero.kicker}</span>
+            <strong>{t.hero.badge}</strong>
+          </span>
+        </div>
 
         <h1 className="hero-display">
           <span className="hero-w hero-w1" style={{ "--d": "0ms", fontSize: "61px" }}>{t.hero.word1}</span>
@@ -2824,9 +3209,63 @@ function Hero({ t, openSim }) {
 
           })}
         </ul>
+
+        <p className="hero-deduct">
+          <I.Tag size={14} />
+          <span>{t.hero.deduct}</span>
+        </p>
       </div>
 
       <div className="hero-fade" aria-hidden="true" />
+    </section>);
+
+}
+
+/* ---------- Services (carousel + grouped grid) ---------- */
+function Services({ t, openSim }) {
+  const groups = t.serviceGroups;
+  const loop = groups.concat(groups); // duplicated for a seamless loop
+
+  return (
+    <section className="services" id="servicios">
+      <div className="services-head">
+        <Reveal>
+          <span className="services-kicker">
+            <span className="services-kicker-dot" />{t.services.kicker}
+          </span>
+          <h2 className="services-title">{t.services.title}</h2>
+          <p className="services-sub">{t.services.subtitle}</p>
+        </Reveal>
+      </div>
+
+      <div className="marquee">
+        <div className="marquee-track marquee-track--svc">
+          {loop.map((g, i) => {
+            const Ico = I[g.icon] || I.Doc;
+            return (
+              <div key={g.id + "-" + i} className="svc-card" aria-hidden="true">
+                <div className="svc-card-head">
+                  <span className="svc-card-ico"><Ico size={20} /></span>
+                  <span className="svc-card-tag">{g.label}</span>
+                </div>
+                <ul className="svc-card-list">
+                  {g.services.map((s) =>
+                  <li key={s.id}>{s.label}</li>
+                  )}
+                </ul>
+              </div>);
+
+          })}
+        </div>
+      </div>
+
+      <div className="services-actions">
+        <button className="btn btn-primary btn-glow" onClick={openSim} type="button">
+          <span className="btn-glow-ring" aria-hidden="true" />
+          <span>{t.services.cta}</span>
+          <I.ArrowRight size={16} />
+        </button>
+      </div>
     </section>);
 
 }
@@ -3088,9 +3527,14 @@ function FinalCTAFooter({ t, openSim }) {
 function App() {
   const [lang, setLang] = useLang();
   const [simOpen, setSimOpen] = useState(false);
+  const [simPreset, setSimPreset] = useState(null);
   const t = TRANSLATIONS[lang];
 
-  const openSim = useCallback(() => setSimOpen(true), []);
+  const openSim = useCallback(() => {setSimPreset(null);setSimOpen(true);}, []);
+  const openSimService = useCallback((groupId, serviceId) => {
+    setSimPreset({ groupId, serviceId });
+    setSimOpen(true);
+  }, []);
   const closeSim = useCallback(() => setSimOpen(false), []);
 
   useEffect(() => {
@@ -3105,13 +3549,14 @@ function App() {
       <Navbar lang={lang} setLang={setLang} openSim={openSim} t={t} />
       <main>
         <Hero t={t} openSim={openSim} />
+        <Services t={t} openSim={openSim} openSimService={openSimService} />
         <EmpathyWhy t={t} openSim={openSim} />
         <About t={t} />
         <How t={t} />
         <TrustBand t={t} />
         <FinalCTAFooter t={t} openSim={openSim} />
       </main>
-      <Simulator open={simOpen} onClose={closeSim} t={t} />
+      <Simulator open={simOpen} onClose={closeSim} t={t} preset={simPreset} />
     </>);
 
 }
